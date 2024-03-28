@@ -1,3 +1,6 @@
+<!-- default badges list -->
+[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
+<!-- default badges end -->
 # Reporting for ASP.NET Core — Detect and Load Custom Fonts with Ease (DXFontRepository)
 
 The following example detects and loads custom fonts used within a report. The application obtains a list of all fonts used in the report and loads them from the [Google Fonts](https://fonts.google.com/) resource, when available. Loaded fonts are added to the [DXFontRepository](https://docs.devexpress.com/CoreLibraries/404255/devexpress-drawing-library/use-font-repository-to-add-custom-fonts) automatically and made available without additional installation requirements.
