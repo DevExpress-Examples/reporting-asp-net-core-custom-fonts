@@ -1,0 +1,12 @@
+{
+  "name": "documentviewerapp",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "devextreme-dist": "23.2-latest",
+    "@devexpress/analytics-core": "23.2-latest",
+    "devexpress-reporting": "23.2-latest"
+  },
+  "license": "MIT",
+  "private": true,
+  "version": "1.0.0"
+}
