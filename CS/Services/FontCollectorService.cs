@@ -13,7 +13,7 @@ namespace DocumentViewerApp.Services
 {
     public class FontCollectorService
     {
-        string apiKey = "AIzaSyDDl-4RWshMIfYToaTe5IRQGYfV5BvLGUU";
+        string apiKey = "your-api-key";
         string fontApiUrl = "https://www.googleapis.com/webfonts/v1/webfonts/?family=";
 
         async Task<byte[]> LoadFontFromGoogle(string fontName)
