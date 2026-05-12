@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DocumentViewerApp": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:2464;http://localhost:2465"
+    }
+  }
+}
