@@ -1,8 +1,16 @@
 @model DevExpress.XtraReports.Web.ReportDesigner.ReportDesignerModel
 
+<style type="text/css">
+    @@font-face {
+        font-family: "Miss Fajardose";
+        src: url('@Url.Content("~/fonts/MissFajardose-Regular.ttf")');
+    }
+</style>
+
 @{
     var designerRender = Html.DevExpress().ReportDesigner("reportDesigner")
         .Height("100%")
+        .ClientSideEvents(x => x.BeforeRender("BeforeRender"))
         .Bind(Model);
     @designerRender.RenderHtml()
 }
@@ -16,6 +24,12 @@
     <script src="~/js/reporting.thirdparty.bundle.js"></script>
     <script src="~/js/viewer.part.bundle.js"></script>
     <script src="~/js/designer.part.bundle.js"></script>
+
+    <script>
+        function BeforeRender(s, e) {
+            s.designerModel.updateFont({ 'Miss Fajardose': 'Miss Fajardose' });
+        }
+    </script>
 
     @designerRender.RenderScripts()
 }

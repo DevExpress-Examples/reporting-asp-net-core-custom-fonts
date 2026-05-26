@@ -7,6 +7,7 @@ RUN apt-get update
 RUN apt-get install -y libc6 libicu-dev libfontconfig1
 
 WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:80
 EXPOSE 80
 EXPOSE 443
 
@@ -15,18 +16,19 @@ WORKDIR /modules
 COPY ["package.json", "./"]
 RUN npm install
 
-FROM mcr.microsoft.com/dotnet/sdk:.8.0-jammy AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
 WORKDIR /src
-RUN --mount=type=secret,id=dxnuget,required=true dotnet nuget add source $(cat /run/secrets/dxnuget) -n devexpress-nuget
 COPY ["DocumentViewerApp.csproj", "DocumentViewerApp/"]
 RUN dotnet restore "DocumentViewerApp/DocumentViewerApp.csproj"
 COPY ["./", "DocumentViewerApp/"]
 WORKDIR "/src/DocumentViewerApp"
 COPY --from=build-frontend ./modules .
-RUN dotnet build "DocumentViewerApp.csproj" -c Release -o /app/build
+RUN --mount=type=secret,id=dxLicense,env=DevExpress_License \
+    dotnet build "DocumentViewerApp.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "DocumentViewerApp.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN --mount=type=secret,id=dxLicense,env=DevExpress_License \
+    dotnet publish "DocumentViewerApp.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
