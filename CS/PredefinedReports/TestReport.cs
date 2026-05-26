@@ -1,5 +1,8 @@
-﻿using DevExpress.Drawing;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace DocumentViewerApp.PredefinedReports
 {
@@ -8,16 +11,6 @@ namespace DocumentViewerApp.PredefinedReports
         public TestReport()
         {
             InitializeComponent();
-            DXFont itemFont = new DXFont("Raleway", 12);
-            DXFont titleFont = new DXFont("Fredericka the Great", 22);
-
-
-            label1.Font = titleFont;
-
-            foreach (XRControlStyle style in StyleSheet)
-            {
-                style.Font = itemFont;
-            }
         }
     }
 }

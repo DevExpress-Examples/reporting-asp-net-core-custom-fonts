@@ -1,5 +1,6 @@
 using DevExpress.AspNetCore;
 using DevExpress.AspNetCore.Reporting;
+using DevExpress.Drawing;
 using DevExpress.Security.Resources;
 using DevExpress.XtraReports.Web.Extensions;
 using DocumentViewerApp.Data;
@@ -31,7 +32,6 @@ namespace DocumentViewerApp
         {
             services.AddDevExpressControls();
             services.AddScoped<ReportStorageWebExtension, CustomReportStorageWebExtension>();
-            services.AddScoped<FontCollectorService, FontCollectorService>();
             services
                 .AddMvc()
                 .AddNewtonsoftJson();
@@ -59,8 +59,7 @@ namespace DocumentViewerApp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, ReportDbContext db)
         {
             db.InitializeDatabase();
-            var contentDirectoryAllowRule = DirectoryAccessRule.Allow(new DirectoryInfo(Path.Combine(env.ContentRootPath, "..", "Content")).FullName);
-            AccessSettings.ReportingSpecificResources.TrySetRules(contentDirectoryAllowRule, UrlAccessRule.Allow());
+            DXFontRepository.Instance.AddFont(Path.Combine(env.WebRootPath, "fonts", "MissFajardose-Regular.ttf"));
             DevExpress.XtraReports.Configuration.Settings.Default.UserDesignerOptions.DataBindingMode = DevExpress.XtraReports.UI.DataBindingMode.Expressions; ;
             app.UseDevExpressControls();
             System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
@@ -84,7 +83,7 @@ namespace DocumentViewerApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Viewer}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

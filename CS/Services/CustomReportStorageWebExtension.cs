@@ -10,12 +10,10 @@ namespace DocumentViewerApp.Services
 {
     public class CustomReportStorageWebExtension : DevExpress.XtraReports.Web.Extensions.ReportStorageWebExtension
     {
-        private readonly FontCollectorService fontCollectorService;
 
         protected ReportDbContext DbContext { get; set; }
-        public CustomReportStorageWebExtension(ReportDbContext dbContext, FontCollectorService fontCollectorService) {
-            this.DbContext = dbContext;
-            this.fontCollectorService = fontCollectorService;
+        public CustomReportStorageWebExtension(ReportDbContext dbContext) {
+            this.DbContext = dbContext;            
         }
 
         public override bool CanSetData(string url) {
@@ -83,14 +81,6 @@ namespace DocumentViewerApp.Services
             // and to save your report to a storage. The method is called only for new reports.
             SetData(report, defaultUrl);
             return defaultUrl;
-        }
-
-        public override async Task AfterGetDataAsync(string url, XtraReport report)
-        {
-            await fontCollectorService.ProcessReport(report);
-
-             await base.AfterGetDataAsync(url, report);
-
         }
     }
 }

@@ -6,19 +6,19 @@
 <!-- default badges end -->
 # Reporting for ASP.NET Core — Detect and Load Custom Fonts with Ease (DXFontRepository)
 
-The following example detects and loads custom fonts used within a report. The application obtains a list of all fonts used in the report and loads them from the [Google Fonts](https://fonts.google.com/) resource, when available. Loaded fonts are added to the [DXFontRepository](https://docs.devexpress.com/CoreLibraries/404255/devexpress-drawing-library/use-font-repository-to-add-custom-fonts) automatically and made available without additional installation requirements.
+Loaded fonts are added to the [DXFontRepository](https://docs.devexpress.com/CoreLibraries/404255/devexpress-drawing-library/use-font-repository-to-add-custom-fonts) automatically and made available without additional installation requirements.
 
 ![image](./media/font-repository-document-viewer.png)
 
 >[!Note]
-> Google Fonts are open-source, but be sure to read the associated license agreement to determine usage rights for your particular use case.
+> Be sure to read the associated font license agreement to determine usage rights for your particular use case.
 
-## Files to Review
-
-* [FontCollectorService.cs](./CS/Services/FontCollectorService.cs)
-* [HomeController.cs](./CS/Controllers/HomeController.cs)
 
 ## Build a Docker Image
+
+### Obtain Your Personal DevExpress License Key
+
+Building a project within a dockerized environment cannot obtain the host's key automatically - which is usually supplied as a build-time secret. Refer to [License Key for DevExpress .NET Products](https://docs.devexpress.com/GeneralInformation/405494/trial-register/set-up-your-dev-express-license-key).
 
 ### Visual Studio
 
@@ -26,14 +26,14 @@ You can run the app on supported Windows platforms, Windows Subsystem for Linux 
 
 ### CLI
 
-Run the application from the dotnet CLI on Windows, Linux and MacOS with the dotnet run command. To run the Docker container from the command line, build the Docker image. You should pass the DevExpress NuGet source URL as a secret to restore NuGet packages.
+Run the application from the dotnet CLI on Windows, Linux and MacOS with the dotnet run command. To run the Docker container from the command line, build the Docker image.
 
 #### Windows
 
 ```console
-set DX_NUGET=https://nuget.devexpress.com/some-nuget-token/api 
+cd DocumentViewerApp
 
-docker build -t reporting-app --secret id=dxnuget,env=DX_NUGET .
+docker build -t reporting-app --secret "id=dxLicense,src=%APPDATA%\DevExpress\DevExpress_License.txt" .
 
 docker run -p 8080:80 reporting-app:latest
 ```
@@ -41,9 +41,9 @@ docker run -p 8080:80 reporting-app:latest
 #### Linux
  
 ```console
-export DX_NUGET=https://nuget.devexpress.com/some-nuget-token/api 
+cd DocumentViewerApp
 
-DOCKER_BUILDKIT=1 docker build -t reporting-app --secret id=dxnuget,env=DX_NUGET . 
+docker build -t reporting-app --secret "id=dxLicense,src=$HOME/.config/DevExpress/DevExpress_License.txt" .
 
 docker run -p 8080:80 reporting-app:latest 
 ```
