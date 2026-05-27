@@ -18,7 +18,7 @@ Loaded fonts are added to the [DXFontRepository](https://docs.devexpress.com/Cor
 
 ### Obtain Your Personal DevExpress License Key
 
-Building a project within a dockerized environment cannot obtain the host's key automatically - which is usually supplied as a build-time secret. Refer to [License Key for DevExpress .NET Products](https://docs.devexpress.com/GeneralInformation/405494/trial-register/set-up-your-dev-express-license-key).
+A project built in a Dockerized environment cannot automatically access the host key, which is typically provided as a build-time secret. Refer to [License Key for DevExpress .NET Products](https://docs.devexpress.com/GeneralInformation/405494/trial-register/set-up-your-dev-express-license-key).
 
 ### Visual Studio
 
