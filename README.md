@@ -18,7 +18,7 @@ Loaded fonts are added to the [DXFontRepository](https://docs.devexpress.com/Cor
 
 ### Obtain Your Personal DevExpress License Key
 
-A project built in a Dockerized environment cannot automatically access the host key, which is typically provided as a build-time secret. Refer to [License Key for DevExpress .NET Products](https://docs.devexpress.com/GeneralInformation/405494/trial-register/set-up-your-dev-express-license-key).
+A project built in a Dockerized environment cannot automatically access the host key, which is typically provided as a build-time secret. Refer to [License Key for DevExpress .NET Products](https://docs.devexpress.com/GeneralInformation/405494/trial-register/set-up-your-dev-express-license-key) for details.
 
 ### Visual Studio
 
@@ -26,7 +26,7 @@ You can run the app on supported Windows platforms, Windows Subsystem for Linux 
 
 ### CLI
 
-Run the application from the dotnet CLI on Windows, Linux, and MacOS with the dotnet run command. To run the Docker container from the command line, build the Docker image.
+Run the application using the .NET CLI on Windows, Linux, or macOS with the `dotnet run` command. To run the Docker container from the command line, build the Docker image.
 
 #### Windows
 
