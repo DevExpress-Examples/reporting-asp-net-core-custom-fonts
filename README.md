@@ -26,7 +26,7 @@ You can run the app on supported Windows platforms, Windows Subsystem for Linux 
 
 ### CLI
 
-Run the application from the dotnet CLI on Windows, Linux and MacOS with the dotnet run command. To run the Docker container from the command line, build the Docker image.
+Run the application from the dotnet CLI on Windows, Linux, and MacOS with the dotnet run command. To run the Docker container from the command line, build the Docker image.
 
 #### Windows
 
