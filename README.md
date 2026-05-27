@@ -22,7 +22,7 @@ A project built in a Dockerized environment cannot automatically access the host
 
 ### Visual Studio
 
-You can run the app on supported Windows platforms, Windows Subsystem for Linux or Docker. Select a platform from the debug drop-down in the toolbar, and start debugging the app.
+You can run the app on supported Windows platforms, Windows Subsystem for Linux, or Docker. Select a platform from the debug drop-down in the toolbar, and start debugging the app.
 
 ### CLI
 
